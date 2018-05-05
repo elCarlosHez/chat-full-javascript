@@ -32,7 +32,7 @@
                 byId('contentWrap').classList.remove("invisible");
             }else{
                 nickError.style.display = 'block';
-                nickError.innerHTML = 'That username already exits';
+                nickError.innerHTML = '<i class="fas fa-times-circle"></i>  That username already exits';
             }
             nickName.value = '';
         });
