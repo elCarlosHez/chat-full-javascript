@@ -1,0 +1,28 @@
+:root{
+    --backgroud-color: hsla(189,100%,39%,1) ;
+    --first-color: hsla(73,82%,45%,1);
+    --second-color: hsla(275,44%,61%,1);
+    --third-color: hsla(25,99%,53%,1);
+    --text-color: hsla(0,70%,100%,1);
+}
+
+body{
+    background-color : var(--backgroud-color);
+}
+
+.invisible{
+    display: none;
+}
+
+.error{
+    color: var(--third-color);
+}
+
+.whisper{
+    color: gray;
+    font-style: italic;
+}
+
+.actualUser{
+    color: var(--first-color);
+}

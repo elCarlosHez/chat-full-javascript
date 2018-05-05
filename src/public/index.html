@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chat en JavaScript-FullStack</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <!-- My CSS -->
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <nav class="navbar navbar-light bg-warning">
+        <a class="navbar-brand mx-auto" href="/">Chat en Javascript</a>
+    </nav>
+
+    <div class="card col-md-6 mt-5 mx-auto" id="nickWrap">
+        <div class="card-header">
+            <h3>Enter your Username:</h3>
+            <p id="nickError"></p>
+            <div class="card-body">
+                <form id="nickForm">
+                    <input type="text" id="nickname" class="form-control">
+                    <button type="submit" class="btn btn-warning mt-2" >
+                        <i class="fas fa-arrow-alt-circle-right"></i> Envíar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container invisible" id="contentWrap">
+        <div class="row mt-2">
+            <div class="col-md-6 offset-md-1">
+                <div class="card">
+                    <div class="card-header">
+                        <g4>let´s chat</g4>
+                    </div>
+                    <div id="chat" class="card-body"></div>
+                        <form id="message-form" class="card-footer">
+                            <div class="input-group">
+                            <input type="text" id="message" class="form-control">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn warning" name="button">
+                                    <i class="fas fa-arrow-alt-circle-right"></i> Envíar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                  <div class="card-header">
+                      <h3>Users</h3>
+                  </div>
+                  <div class="card-body">
+                      <div id="usernames"></div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!--  <script
+			  src="http://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script> -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
