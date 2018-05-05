@@ -1,13 +1,102 @@
 :root{
-    --backgroud-color: hsla(189,100%,39%,1) ;
-    --first-color: hsla(73,82%,45%,1);
-    --second-color: hsla(275,44%,61%,1);
+    --backgroud-color: hsla(0, 0%, 90%, 0.8) ;
+    --first-color: hsla(189,100%,39%,1) ;
+    --first-color-contrast: hsla(189,100%,50%,1) ;
+    --second-color: hsla(0, 0%, 89%, 1);
     --third-color: hsla(25,99%,53%,1);
-    --text-color: hsla(0,70%,100%,1);
+    --text-title-color: hsla(0,70%,100%,1);
+    --error-color: hsla(10,99%,53%,1);
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.main-header{
+    background-color: var(--third-color);
+}
+
+.title{
+    color: var(--text-title-color);
+    font-size: 2em;
+    text-align: center;
+    padding-top: 0.3em;
+    padding-bottom: 0.4em;
+    overflow: auto;
+}
+
+.subtitle{
+    font-size: 1.5em;
+}
+
+.main-center{
+    /* width: 1em;
+    height: 1em; */
+    border-radius: 5px;
+    background-color: var(--first-color);
+    text-align: center;
+}
+
+.button{
+    border-radius: 6px;
+    width: 100px;
+    height: 40px;
+    background-color: var(--first-color);
+}
+
+.error-message{
+    display: none;
+    height: 100px;
+    width: 100px;
+    margin: 1px solid red;
+    background-color: salmon;
+}
+
+.button:hover{
+    background-color: var(--first-color-contrast);
+}
+
+.card-conteiner-short{
+    width: 60%;
+    height: 150px;
+    background-color: var(--second-color);
+    border-radius: 10px;
+}
+
+.card-head{
+    width: 100%;
+    height: 3em;
+    background-color: var(--first-color);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: auto;
+}
+
+.card-content{
+    background: var(--second-color);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 100%;
+    height: 100%;
+    padding-top: 2.7em;
+}
+
+.input-text{
+    display: block;
+    height: 30px;
+    width: 30%;
+    margin-top: 5px;
+    margin-left: 30%;
+    margin-right: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    border:1px solid #ccc;
+    font-size: 20px;
 }
 
 body{
-    background-color : var(--backgroud-color);
+    /* background-color : var(--backgroud-color); */
+    background-color :  linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(245,245,245,0.81) 47%, rgba(237,237,237,0.6) 100%);
 }
 
 .invisible{

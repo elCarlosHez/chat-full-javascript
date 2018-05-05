@@ -31,7 +31,8 @@
                 byId('nickWrap').style.display = 'none';
                 byId('contentWrap').classList.remove("invisible");
             }else{
-                nickError.innerHTML = '<div class="alert alert-danger"> That username already exits </div>';
+                nickError.style.display = 'block';
+                nickError.innerHTML = 'That username already exits';
             }
             nickName.value = '';
         });
