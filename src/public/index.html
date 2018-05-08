@@ -14,32 +14,29 @@
 </head>
 <body>
     <header class="main-header ed-container full">
-            <a class="ed-item title" href="/">Chat en Javascript</a>
+            <a class="ed-item main-center title" href="/">Chat en Javascript</a>
     </header>
     <br>
-    <br>
-    <div class="ed-container card-conteiner-short" id="nickWrap">
-        <header class="ed-container ed-item card-head">
-                <h2 class="ed-item title subtitle">Enter your Username:</h2>
+    <div class="ed-container s-80 l-50 " id="nickWrap">
+        <header class="ed-item ed-container main-center card-head">
+                <h2 class="ed-item main-center">Enter your Username</h2>
         </header>
-        <div class="ed-container ed-item card-content" >
-            <p id="nickError" class="ed-item error-message" ></p>
-            <form id="nickForm" class="ed-item ed-container ">
-                <input type="text" id="nickname" class="ed-item input-text">
-                <button type="submit" class="button ed-item" >
-                    <i class="fas fa-arrow-alt-circle-right"></i> Send
-                </button>
-            </form>
-        </div>
+        <p id="nickError" class="ed-item error-message"></p>
+        <form id="nickForm" class="ed-item ed-container card-conteiner-short">
+            <input type="text" id="nickname" class="ed-item m-1-3 l-50 input-text">
+            <button type="submit" class="ed-item button" >
+                <i class="fas fa-arrow-alt-circle-right"></i> Send
+            </button>
+        </form>
     </div>
 
-    <div class="ed-container invisible card-conteiner-big" id="contentWrap">
-        <header class="ed-item ed-container card-head card-head-chat">
-            <h2 class="ed-item title subtitle"> Chat Room </h2>
+    <div class="ed-container s-95 m-50 l-80 invisible card-conteiner-big" id="contentWrap">
+        <header class="ed-item ed-container main-center card-head card-head-chat">
+            <h2 class="ed-item"> Chat Room </h2>
         </header>
         <aside class="ed-item ed-container card-column ">
-            <header class="ed-item ed-container card-head card-head-chat card-header-column">
-                <h3 class="ed-item title subtitle">Users On</h3>
+            <header class="ed-item ed-container main-center card-head card-header-column">
+                <h3 class="ed-item">Users On</h3>
             </header>
             <ul class="ed-item card-content" id="usernames">
             </ul>
@@ -47,11 +44,21 @@
         <section id="chat" class="card-container card-content-chat"></section>
         <form id="message-form" class="ed-container ed-item card-container card-content-footer">
             <input type="text" id="message" class="ed-item input-text input-text-message">
-            <button type="submit" class="ed-item ed-container button-message" name="button">
+            <button type="submit" class="ed-item button-message" name="button">
                 <i class="ed-item fas fa-arrow-right button-arrow"></i> 
             </button>
         </form> 
     </div>
+    <br>
+    <br>
+    <div class="ed-container s-90 m-30 ">
+        <h3 class="ed-item main-center card-head" >Comandos</h3>
+        <div class="ed-item ed-container card-conteiner-short">
+            <p class="ed-item"><span class="user"> @&ltNick&gt - </span> Send a private message</p>
+            <p class="ed-item"><span class="user"> /s &ltMessage&gt - </span> Scream a message</p>
+        </div>
+    </div>
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="./js/main.js"></script>
 </body>

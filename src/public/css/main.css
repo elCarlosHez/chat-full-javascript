@@ -5,11 +5,9 @@
     --first-color: #00A9C7;
     --first-color-contrast: rgb(4, 144, 168);
     --second-color: #FFC107;
-    
     --third-color: #FF6B6B;
     --text-title-color: hsla(0,70%,100%,1);
     --error-color: hsla(10,99%,53%,1);
-
     --active-user: #47DB30;
 }
 
@@ -22,39 +20,28 @@ a:link {
     text-decoration: none;
 }
 
+
 body{
-    /* background-color : var(--backgroud-color); */
     background-color :  var(--backgroud-color);
 }
 
-.main-header{
-    background-color: var(--first-color);
+.main-center{
+    text-align: center;
 }
 
 .title{
-    color: var(--text-title-color);
-    font-size: 2em;
-    text-align: center;
-    padding-top: 0.3em;
-    padding-bottom: 0.4em;
-    overflow: auto;
-}
-
-.subtitle{
-    font-size: 1.5em;
-}
-
-.main-center{
-    /* width: 1em;
-    height: 1em; */
-    border-radius: 5px;
     background-color: var(--first-color);
-    text-align: center;
-}
+    color: var(--text-title-color);
+    font-size: 1.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    overflow: auto;
+} 
 
 .button{
     border-radius: 6px;
-    margin-left: 0.4em;
+    margin-left: 4em;
+    display: block;
     width: 100px;
     height: 40px;
     background-color: var(--first-color);
@@ -76,65 +63,63 @@ body{
     background-color: var(--first-color-contrast);
 }
 
+.card-head{
+    background-color: var(--second-color);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: 1.2em;
+    color: var(--text-title-color);
+    padding: 0.4em 0;
+    overflow: auto;
+}
+
+.card-head-chat{
+    background-color: var(--second-color);
+    width: 80%;
+    border-top-right-radius: 0;
+    font-size: 1em;
+}
+
 .card-conteiner-short{
-    width: 60%;
+    width: 100%;
     height: 6em;
     background-color: var(--background-second-color);
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
+    padding-top: 1em;
 }
 
 .card-conteiner-big{
-    width: 70%;
+    
     height: 80%;
     background-color: var(--background-second-color);
     border-radius: 10px;
 }
 
 .card-column{
-    /* float: right; */
     width: 20%;
     height: 1em;
-   /*  border-left: 2px solid var(--third-color); */
-   /*  border-bottom: 2px solid var(--third-color); */
     margin-top: 0;
-    /* margin-left: 80%; */
     background-color: var(--background-second-color-contrast);
-    position: relative;  
     border-top-right-radius: 10px;
-}
-
-.card-head{
-    width: 100%;
-    height: 4em;
-    background-color: var(--second-color);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    overflow: auto;
-}
-
-.card-head-chat{
-    width: 80%;
-    border-top-right-radius: 0;
 }
 
 .card-header-column{
     width: 100%;
+    height: 3.3em;
+    font-size: .80em;
     background-color: var(--third-color);
     border-top-right-radius : 10px;
     border-top-left-radius : 0;
 }
 
 .card-content{
-    margin-top: 20px;
-
     background-color: var(--background-second-color );
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-
     border-top-left-radius: 10px;
-
     width: 100%;
     height: 100%;
+    padding: 0;
 }
 
 .card-content-chat{
@@ -142,7 +127,7 @@ body{
     width: 80%;
     height: 70%;
     margin-top: 0;
-    padding-left: 4em; 
+    padding-left: 1em; 
 }
 
 .card-content-footer{
@@ -158,20 +143,22 @@ body{
 .input-text{
     display: block;
     height: 30px;
-    width: 30%;
-    margin-left: 30%;
-    margin-right: 5px;
+    width: 80%;
     border-radius: 5px;
     text-decoration: none;
     border:1px solid #ccc;
     font-size: 20px;
+    position: relative;
+    left: 2em;
 }
 
 .input-text-message{
     font-size: 1.2em;
-    margin-left: 0.5em;
+    position: static;
+    /* margin-left: 0.3em;
     margin-top: 0.3em;
-    margin-bottom: 0.3em;
+    margin-bottom: 0.3em; */
+    margin: 0.4em;
     height: 70%;
     width: 70%;
 }
@@ -193,9 +180,7 @@ body{
     list-style-type: none;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
-    /* margin-bottom: 0.2em; */
-    /* padding-left: 1em; */
-    position: relative;
+    padding: 0;
 }
 
 .actualUser{
@@ -217,6 +202,7 @@ body{
     width: 2.3em;
     background-color: var(--first-color);
     margin-top: 0.3em;
+    /* margin-left: 5em; */
     border-radius: 50%;
 }
 
@@ -225,10 +211,9 @@ body{
     width: 1.4em;
     
     color: white;
-    
     position: relative;
-    bottom: 2px;
-    right: 3px;
+    bottom: 4px;
+    right: 14px;
 }
 
 .button-message:hover{
