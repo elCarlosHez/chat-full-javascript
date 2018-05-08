@@ -48,26 +48,36 @@
     }
 
     socket.on('new message', data => {
-        chat.innerHTML += '<b>' + data.nick + '</b>: ' + data.msg + '<br/>';//data + "<br />";
+        chat.innerHTML += '<p class="chat-message"><span class="user-nick">' + data.nick + ': </span>' + data.msg + '</p>';/* '<b>' + data.nick + '</b>: ' + data.msg + '<br/>'; */
+        
     });
 
-    // Evento para asignar al usuario actual
+    // Assign actual user
     socket.on('set actualNick', nick =>{
         actualNick.nick = nick;
     })
 
     socket.on('usernames', data =>{
-        let html = '';
-        for(let i = 0; i < data.length; i++){
-            html += '<p id="user-' + data[i] + '"><i class="fas fa-user"></i>' + ' ' + data[i] + '</p>';
+        while(users.firstChild){
+            users.removeChild(users.firstChild);
         }
-        users.innerHTML = html;
-        // Buscamos el usuario actual, y lo iluminamos
+        for(let i = 0; i < data.length; i++){
+            let newLiUser = document.createElement('li');
+            // Assign an id
+            newLiUser.setAttribute('id','user-'+data[i]);
+            newLiUser.setAttribute('class','ed-item user');
+            newLiUser.innerHTML += '<i class="fas fa-user">  </i>';
+            newLiUser.appendChild(document.createTextNode('  ' + data[i]));
+
+            users.appendChild(newLiUser);
+        }
+
+        // Set actual user state
         byId('user-'+actualNick.nick).classList.add('actualUser');
     });
 
     socket.on('whisper',data => {
-        chat.innerHTML +='<p class="whisper"><b>' + data.nick + ': </b>' + data.msg + '</p>';
+        chat.innerHTML +='<p class="chat-message whisper"><span class="user-nick">' + data.nick + ': </span>' + data.msg + '</p>';
     })
 
     socket.on('load old msgs', msgs => {
@@ -77,7 +87,7 @@
     })
 
     function displayMsg(data){
-        chat.innerHTML += '<p><b>' + data.nick + ': </b>' + data.msg + '</p>';
+        chat.innerHTML += '<p class="chat-message"><span class="user-nick">' + data.nick + ': </span>' + data.msg + '</p>';
     }
 
 }());
