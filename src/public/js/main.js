@@ -80,6 +80,10 @@
         chat.innerHTML +='<p class="chat-message whisper"><span class="user-nick">' + data.nick + ': </span>' + data.msg + '</p>';
     })
 
+    socket.on('scream',data =>{
+        chat.innerHTML +='<p class="chat-message scream"><span class="user-nick">' + data.nick + ': </span>' + data.msg + '</p>';
+    })
+
     socket.on('load old msgs', msgs => {
         for(let i = msgs.length - 1; i >= 0; --i){
             displayMsg(msgs[i]);

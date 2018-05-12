@@ -40,22 +40,27 @@ module.exports = function(io){
             io.sockets.emit('usernames', Object.keys(users));
         }
 
+        function save_message(_msg,_nick){
+            var newMsg = new Chat({
+                msg: _msg,
+                nick: _nick
+            });
+            newMsg.save();
+        }
 
         socket.on('send message', async (data, cb) => {
 
             // /w <user> <msg>
 
             var msg = data.trim();
-
+            
             // Vemos si el mensaje empezo con un arroba
-            if(msg.substr(0,1) == '@'){
+            if(msg.substr(0,1) === '@'){
                 msg = msg.substr(1);
-
                 const index = msg.indexOf(' ');
                 if(index != -1){
                     var name = msg.substring(0,index);
                     var msg = msg.substring(index + 1);
-
                     if(name in users){
                         users[name].emit('whisper', {
                             // El mensaje
@@ -69,12 +74,21 @@ module.exports = function(io){
                 } else{
                     cb('Error! Please enter your message!')
                 }
-            }else {
-                var newMsg = new Chat({
-                    msg,
-                    nick: socket.nickname
-                });
-                await newMsg.save();
+                // Te deja mandar "/s " sin mensaje, hay que arreglarlo
+            }else if(msg.substr(0,3) === '/s '){
+                msg = msg.substr(3);
+                if(msg.indexOf(' ') == -1){
+                    
+                    await save_message(msg,socket.nickname);
+                    io.sockets.emit('scream',{
+                        msg,
+                        nick: socket.nickname
+                    });
+                }else{
+                    cb('Error! Please enter your message!')
+                }
+            }else{
+                await save_message(msg,socket.nickname);
 
                 io.sockets.emit('new message',{
                     msg: data,
