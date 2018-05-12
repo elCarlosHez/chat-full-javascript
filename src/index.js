@@ -18,7 +18,7 @@ require('./sockets')(io);
 
 
 // db connection
-mongoose.connect('mongodb://localhost/chat-database')
+mongoose.connect('mongodb://root:031!OhOoFAsblvj6JLRaEqi@ds217360.mlab.com:17360/chatdb')
         .then(db => console.log('Data base is connected'))
         .catch(err => console.log(err));
 // static files
