@@ -31,7 +31,7 @@ module.exports = function(io){
                 cb(2);
             }else{
                 cb(3);
-                console.log(`Call Back : ${cb}`);
+                
                 socket.nickname = data;
                 users[socket.nickname] = socket;
 
@@ -104,6 +104,12 @@ module.exports = function(io){
                     let messages = await Chat.find({}).sort({ created_at: -1});
                     // send all messages
                     users[socket.nickname].emit('load all msgs',messages);
+                }else{
+                    cb(`Invalid command`);
+                }
+            }else if(msg.substr(0,6) == '/clean'){
+                if(msg.length == 6){
+                    users[socket.nickname].emit('clean messages');
                 }else{
                     cb(`Invalid command`);
                 }

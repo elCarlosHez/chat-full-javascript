@@ -105,6 +105,10 @@
         } 
     })
 
+    socket.on('clean messages', e => {
+        cleanChat();
+    });
+
     function displayMsg(data){
         chat.innerHTML += '<p class="chat-message"><span class="user-nick">' + data.nick + ': </span>' + data.msg + '</p>';
     }
