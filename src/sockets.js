@@ -80,13 +80,12 @@ module.exports = function(io){
                             nick: socket.nickname
                         });
                     } else {
-                        cb('Error! Please enter a Valid User')
+                        cb('Error! Please enter a Valid User');
                     }
                 } else{
-                    cb('Error! Please enter your message!')
+                    cb('Error! Please enter your message!');
                 }
             }else if(msg.substr(0,2) === '/s'){
-                console.log("Entrando a mensaje scream")
                 msg = msg.substr(2);
                 const index = msg.indexOf(' ');
                 
@@ -97,7 +96,16 @@ module.exports = function(io){
                         nick: socket.nickname
                     });
                 }else{
-                    cb('Error! Please enter your message!')
+                    cb('Error! Please enter your message!');
+                }
+            }else if(msg.substr(0,4) === '/all'){
+                if(msg.length == 4){
+                    // get all messages
+                    let messages = await Chat.find({}).sort({ created_at: -1});
+                    // send all messages
+                    users[socket.nickname].emit('load all msgs',messages);
+                }else{
+                    cb(`Invalid command`);
                 }
             }else{
                 await save_message(msg,socket.nickname);

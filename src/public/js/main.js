@@ -96,8 +96,23 @@
         }
     })
 
+    socket.on('load all msgs',msgs =>{
+        // clean chat box
+        cleanChat();
+
+        for(let i = msgs.length - 1; i >= 0; --i){
+            displayMsg(msgs[i]);
+        } 
+    })
+
     function displayMsg(data){
         chat.innerHTML += '<p class="chat-message"><span class="user-nick">' + data.nick + ': </span>' + data.msg + '</p>';
+    }
+
+    function cleanChat(){
+        while(chat.firstChild){
+            chat.removeChild(chat.firstChild);
+        }
     }
 
 }());
