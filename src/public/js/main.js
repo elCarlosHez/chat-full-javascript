@@ -27,12 +27,18 @@
     nickForm.onsubmit = e =>{
         e.preventDefault();
         socket.emit('new user', nickName.value, data => {
-            if(data){
+            if(data === 3){
                 byId('nickWrap').style.display = 'none';
                 byId('contentWrap').classList.remove("invisible");
-            }else{
+            }else if(data == 2){
                 nickError.style.display = 'block';
-                nickError.innerHTML = '<i class="fas fa-times-circle"></i>  That username already exits';
+                nickError.innerHTML = '<i class="fas fa-times-circle"></i>  The username cannot contain spaces or more than 11 letters';
+            }else if(data == 1){
+                nickError.style.display = 'block';
+                nickError.innerHTML = '<i class="fas fa-times-circle"></i>  Empty username';
+            }else if(data === 0){
+                nickError.style.display = 'block';
+                nickError.innerHTML = '<i class="fas fa-times-circle"></i>  That username already exits!';
             }
             nickName.value = '';
         });

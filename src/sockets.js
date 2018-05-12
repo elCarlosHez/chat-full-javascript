@@ -3,24 +3,35 @@ const Chat = require('./models/Chat');
 module.exports = function(io){
 
     let users = {};
+    const number_messages = 8;
+
 
     io.on('connection',async socket => {
         console.log('new user connected');
 
         let messages = await Chat.find({})
-                // Que irán desde el ultimo creado
+                // The order of the message would be from de last
                 .sort({ created_at: -1} )
-                // Mostramos sólo 9 mensaje
-                .limit(8);
+                // We just going to send a number o message from the data base
+                .limit(number_messages);
         
         socket.emit('load old msgs', messages);
 
         socket.on('new user',(data, cb) => {
-            console.log(data);
+            console.log(`Nick : ${data}`);
+            //  0 = User already exist
+            //  1 = Empty username
+            //  2 = Username more than 11 letters or has spaces
+            //  3 = Correct Username
             if(data in users){
-                cb(false);
+                cb(0);
+            }else if(!data){
+                cb(1);
+            }else if(data.length > 11 || data.indexOf(" ") != -1){
+                cb(2);
             }else{
-                cb(true);
+                cb(3);
+                console.log(`Call Back : ${cb}`);
                 socket.nickname = data;
                 users[socket.nickname] = socket;
 
@@ -74,11 +85,12 @@ module.exports = function(io){
                 } else{
                     cb('Error! Please enter your message!')
                 }
-                // Te deja mandar "/s " sin mensaje, hay que arreglarlo
-            }else if(msg.substr(0,3) === '/s '){
-                msg = msg.substr(3);
-                if(msg.indexOf(' ') == -1){
-                    
+            }else if(msg.substr(0,2) === '/s'){
+                console.log("Entrando a mensaje scream")
+                msg = msg.substr(2);
+                const index = msg.indexOf(' ');
+                
+                if(index != -1){
                     await save_message(msg,socket.nickname);
                     io.sockets.emit('scream',{
                         msg,
