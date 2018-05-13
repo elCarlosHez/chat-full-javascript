@@ -18,6 +18,7 @@ module.exports = function(io){
         socket.emit('load old msgs', messages);
 
         socket.on('new user',(data, cb) => {
+            data = data.trim();
             console.log(`Nick : ${data}`);
             //  0 = User already exist
             //  1 = Empty username
@@ -64,8 +65,8 @@ module.exports = function(io){
             // /w <user> <msg>
 
             var msg = data.trim();
-            
-            // Vemos si el mensaje empezo con un arroba
+
+            // If the message start with @, its a whisper message
             if(msg.substr(0,1) === '@'){
                 msg = msg.substr(1);
                 const index = msg.indexOf(' ');
